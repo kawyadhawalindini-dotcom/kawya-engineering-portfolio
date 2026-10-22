@@ -1,0 +1,771 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hydrogen Energy Storage | Kawya Dhawalindini</title>
+
+    <meta name="description"
+        content="A MATLAB/Simulink study of hydrogen energy storage, solar power input, hydrogen production, fuel cell output and grid power balance.">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        :root {
+            --project-bg: #081225;
+            --project-panel: #101e35;
+            --project-panel-light: #152641;
+            --project-border: #263954;
+            --project-blue: #69aaff;
+            --project-text: #eaf1fc;
+            --project-muted: #aabbd2;
+        }
+
+        body {
+            background: var(--project-bg);
+            color: var(--project-text);
+        }
+
+        .project-page {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+        .project-header {
+            border-bottom: 1px solid var(--project-border);
+            background: rgba(8, 18, 37, 0.96);
+        }
+
+        .project-header-inner {
+            width: min(1120px, 90%);
+            min-height: 76px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--project-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .project-hero {
+            padding: 85px 0 55px;
+        }
+
+        .eyebrow {
+            color: var(--project-blue);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .project-hero h1 {
+            max-width: 850px;
+            color: #fff;
+            font-size: clamp(2.3rem, 5vw, 4.4rem);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin: 0 0 24px;
+        }
+
+        .project-hero h1 span {
+            color: var(--project-blue);
+        }
+
+        .hero-description {
+            max-width: 760px;
+            color: var(--project-muted);
+            font-size: 1.08rem;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #304969;
+            background: #12223b;
+            color: #d8e8ff;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 0 0 65px;
+        }
+
+        .meta-card {
+            padding: 22px;
+            background: var(--project-panel);
+            border: 1px solid var(--project-border);
+            border-radius: 12px;
+        }
+
+        .meta-label {
+            display: block;
+            color: var(--project-muted);
+            font-size: 0.8rem;
+            margin-bottom: 9px;
+        }
+
+        .meta-value {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .project-section {
+            margin-bottom: 65px;
+            scroll-margin-top: 25px;
+        }
+
+        .section-kicker {
+            color: var(--project-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-section h2 {
+            color: #fff;
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            margin: 0 0 18px;
+        }
+
+        .project-section h3 {
+            color: #fff;
+            font-size: 1.08rem;
+            margin: 0 0 10px;
+        }
+
+        .project-section p {
+            color: var(--project-muted);
+            line-height: 1.85;
+            margin: 0 0 15px;
+        }
+
+     .model-frame {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 9.5px;
+    background: #fff;
+    border: 1px solid var(--project-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.model-frame img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+        .image-caption {
+            color: var(--project-muted);
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 14px;
+        }
+
+        .note {
+            margin-top: 18px;
+            padding: 18px 20px;
+            border-left: 3px solid var(--project-blue);
+            border-radius: 0 8px 8px 0;
+            background: var(--project-panel);
+            color: var(--project-muted);
+            line-height: 1.8;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .info-card {
+            background: var(--project-panel);
+            border: 1px solid var(--project-border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card-number {
+            color: var(--project-blue);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .info-card p {
+            font-size: 0.94rem;
+            margin-bottom: 0;
+        }
+
+        .parameter-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--project-panel);
+            border: 1px solid var(--project-border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .parameter-table th,
+        .parameter-table td {
+            padding: 15px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--project-border);
+            line-height: 1.6;
+        }
+
+        .parameter-table th {
+            color: #fff;
+            background: var(--project-panel-light);
+            font-size: 0.88rem;
+        }
+
+        .parameter-table td {
+            color: var(--project-muted);
+            font-size: 0.92rem;
+        }
+
+        .parameter-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .results-placeholder {
+            padding: 30px;
+            border: 1px dashed #49617f;
+            border-radius: 12px;
+            background: rgba(16, 30, 53, 0.65);
+        }
+
+        .results-placeholder p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 35px 0 80px;
+        }
+
+        .project-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 12px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .project-button.primary {
+            background: var(--project-blue);
+            color: #071225;
+        }
+
+        .project-button.primary:hover {
+            background: #a1ccff;
+            transform: translateY(-2px);
+        }
+
+        .project-button.secondary {
+            color: var(--project-text);
+            border: 1px solid var(--project-border);
+        }
+
+        .project-button.secondary:hover {
+            border-color: var(--project-blue);
+        }
+
+        .project-footer {
+            border-top: 1px solid var(--project-border);
+            padding: 25px 5%;
+            color: var(--project-muted);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .project-hero {
+                padding-top: 55px;
+            }
+
+            .project-meta {
+                grid-template-columns: 1fr;
+                margin-bottom: 50px;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-section {
+                margin-bottom: 50px;
+            }
+
+            .model-frame {
+                padding: 8px;
+            }
+
+            .parameter-table th,
+            .parameter-table td {
+                padding: 11px 10px;
+                font-size: 0.82rem;
+            }
+
+            .project-header-inner {
+                min-height: 68px;
+            }
+        }
+        
+.results-image-frame {
+    max-width: 750px;
+    margin: 24px auto;
+    padding: 9px;
+    background: #ffffff;
+    border: 1px solid var(--project-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.results-image-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image-caption {
+    margin: 12px 0 0;
+    color: #526174;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.results-notes {
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid var(--project-border);
+    border-radius: 12px;
+    background: rgba(16, 30, 53, 0.65);
+}
+
+.results-notes h3 {
+    margin-top: 0;
+}
+
+.results-notes li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="brand" href="../index.html">
+                KAWYA <span style="color:#69aaff;">/ ENGINEERING</span>
+            </a>
+
+            <a class="back-link" href="../index.html#projects">
+                ← All Projects
+            </a>
+        </div>
+    </header>
+
+    <main class="project-page">
+
+        <!-- HERO -->
+        <section class="project-hero">
+            <div class="eyebrow">Renewable Energy · Simulation Study</div>
+
+            <h1>
+                Hydrogen Energy
+                <span>Storage Simulation</span>
+            </h1>
+
+            <p class="hero-description">
+                A MATLAB/Simulink model exploring the conversion of
+                solar power into hydrogen, hydrogen storage, fuel-cell
+                electricity generation, and the relationship between
+                generated power and grid load demand.
+            </p>
+
+            <div class="tags">
+                <span class="tag">MATLAB / Simulink</span>
+                <span class="tag">Hydrogen Energy</span>
+                <span class="tag">Renewable Energy</span>
+                <span class="tag">Power Balance</span>
+            </div>
+        </section>
+
+        <!-- PROJECT INFORMATION -->
+        <section class="project-meta">
+            <div class="meta-card">
+                <span class="meta-label">Software</span>
+                <span class="meta-value">MATLAB / Simulink</span>
+            </div>
+
+            <div class="meta-card">
+                <span class="meta-label">Project Area</span>
+                <span class="meta-value">Energy Storage Systems</span>
+            </div>
+
+            <div class="meta-card">
+                <span class="meta-label">Main Focus</span>
+                <span class="meta-value">Hydrogen & Power Balance</span>
+            </div>
+        </section>
+
+        <!-- OVERVIEW -->
+        <section class="project-section" id="overview">
+            <div class="section-kicker">01 / Overview</div>
+            <h2>Project Overview</h2>
+
+            <p>
+                Renewable energy sources such as solar power can vary
+                with environmental conditions. Hydrogen energy storage
+                offers a way to represent the conversion of available
+                electrical energy into hydrogen and its later conversion
+                back into electricity.
+            </p>
+
+            <p>
+                This simulation models a solar power input, hydrogen
+                production and storage calculations, a fuel-cell power
+                output, and grid load demand. A power-balance signal
+                is used to compare the generated output with the demand
+                represented in the model.
+            </p>
+        </section>
+
+        <!-- BLOCK DIAGRAM -->
+        <section class="project-section" id="model">
+            <div class="section-kicker">02 / System Model</div>
+            <h2>MATLAB/Simulink Block Diagram</h2>
+
+            <p>
+                The block diagram shows the model's signal flow from
+                the solar power input through the hydrogen-related
+                calculations and output-power path. The model also
+                includes a grid load demand signal and a power-balance
+                calculation.
+            </p>
+
+            <div class="model-frame">
+                <img
+                    src="../images/hydrogen-simulation-model.png"
+                    alt="MATLAB Simulink block diagram of the hydrogen energy storage simulation"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="image-caption">
+                Figure 1. Simulink model structure supplied for this project.
+            </div>
+
+            <div class="note">
+                The diagram illustrates the implemented model structure.
+                Individual gain blocks and conversion calculations should
+                be interpreted using their configured parameters and the
+                model equations.
+            </div>
+        </section>
+
+        <!-- OBJECTIVES -->
+        <section class="project-section" id="objectives">
+            <div class="section-kicker">03 / Objectives</div>
+            <h2>Simulation Objectives</h2>
+
+            <div class="content-grid">
+                <article class="info-card">
+                    <div class="card-number">OBJECTIVE 01</div>
+                    <h3>Solar Power Input</h3>
+                    <p>
+                        Represent the solar power profile used as the
+                        input signal to the model.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">OBJECTIVE 02</div>
+                    <h3>Hydrogen Production</h3>
+                    <p>
+                        Model hydrogen production using the configured
+                        electrolysis-related calculation.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">OBJECTIVE 03</div>
+                    <h3>Hydrogen Storage</h3>
+                    <p>
+                        Represent the accumulation of the calculated
+                        hydrogen quantity through the storage-related
+                        signal path.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">OBJECTIVE 04</div>
+                    <h3>Power Balance</h3>
+                    <p>
+                        Compare the model's power-output signal with
+                        the grid-load-demand signal.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- METHODOLOGY -->
+        <section class="project-section" id="methodology">
+            <div class="section-kicker">04 / Methodology</div>
+            <h2>Model Workflow</h2>
+
+            <div class="content-grid">
+                <article class="info-card">
+                    <div class="card-number">STEP 01</div>
+                    <h3>Solar Input Signal</h3>
+                    <p>
+                        A solar power input signal provides the starting
+                        point for the model's calculations.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">STEP 02</div>
+                    <h3>Hydrogen Calculation</h3>
+                    <p>
+                        Gain blocks and configured constants represent
+                        the calculation path used for hydrogen production.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">STEP 03</div>
+                    <h3>Storage-Related Signal</h3>
+                    <p>
+                        An integrator and downstream block represent
+                        the storage-related calculation in the model.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <div class="card-number">STEP 04</div>
+                    <h3>Power-Balance Calculation</h3>
+                    <p>
+                        The output-power and load-demand signals are
+                        combined to calculate the model's power balance.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- PARAMETERS -->
+        <section class="project-section" id="parameters">
+            <div class="section-kicker">05 / Model Configuration</div>
+            <h2>Simulation Parameters</h2>
+
+            <p>
+                The following values were provided in the project
+                description. Their exact units and implementation
+                should be checked against the Simulink model.
+            </p>
+
+            <table class="parameter-table">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Specified Value</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Electrolysis voltage</td>
+                        <td>1.23 V</td>
+                    </tr>
+                    <tr>
+                        <td>Faraday efficiency</td>
+                        <td>80%</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel-cell efficiency</td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>Hydrogen energy density</td>
+                        <td>33.3 kWh/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Hydrogen storage capacity</td>
+                        <td>100 kg</td>
+                    </tr>
+                    <tr>
+                        <td>Grid load demand range</td>
+                        <td>300–500 W</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                These are the parameters supplied for the project,
+                not a claim that every value is directly represented
+                or independently validated in the displayed diagram.
+            </div>
+        </section>
+
+        
+<!-- RESULTS -->
+<section class="project-section" id="results">
+    <div class="section-kicker">06 / Simulation Outputs</div>
+    <h2>Results &amp; Analysis</h2>
+
+    <p>
+        The MATLAB/Simulink simulation produces four output
+        graphs illustrating solar power input, hydrogen storage,
+        battery state of charge, and grid power balance.
+    </p>
+
+    <div class="results-image-frame">
+        <img
+            src="../images/hydrogen-simulation-results.png"
+            alt="Four MATLAB simulation graphs showing solar power input, hydrogen stored, battery state of charge, and grid power balance"
+            loading="lazy"
+        >
+        <p class="image-caption">
+            Figure 1: Simulation outputs of the hydrogen energy
+            storage model.
+        </p>
+    </div>
+
+    <div class="results-notes">
+        <h3>Output Observations</h3>
+
+        <ul>
+            <li>
+                <strong>Solar Power Input:</strong>
+                Solar power increases to approximately 1000 W
+                before decreasing.
+            </li>
+            <li>
+                <strong>Hydrogen Stored:</strong>
+                The stored hydrogen increases over the
+                simulation period.
+            </li>
+            <li>
+                <strong>Battery State of Charge:</strong>
+                The displayed SOC remains approximately constant.
+            </li>
+            <li>
+                <strong>Grid Power Balance:</strong>
+                The plotted balance becomes increasingly negative.
+                Its meaning depends on the model's sign convention.
+            </li>
+        </ul>
+    </div>
+</section>
+
+        <!-- FUTURE WORK -->
+        <section class="project-section" id="future-work">
+            <div class="section-kicker">07 / Further Development</div>
+            <h2>Limitations & Future Improvements</h2>
+
+            <div class="content-grid">
+                <article class="info-card">
+                    <h3>Model Validation</h3>
+                    <p>
+                        Check the units, gain values, conversion
+                        equations, and signal scaling against the
+                        intended physical relationships.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Real Solar Data</h3>
+                    <p>
+                        Investigate using measured solar-generation
+                        profiles instead of an idealised input signal.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Hybrid Energy Storage</h3>
+                    <p>
+                        Explore combining hydrogen storage with
+                        battery energy storage in a future model.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Dynamic Demand</h3>
+                    <p>
+                        Test the model using different load-demand
+                        profiles and operating conditions.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- NAVIGATION -->
+        <div class="project-navigation">
+            <a class="project-button primary"
+               href="../index.html#projects">
+                ← Back to Portfolio
+            </a>
+
+            <a class="project-button secondary"
+               href="../index.html#contact">
+                Contact Me
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="project-footer">
+        © 2026 Kawya Dhawalindini · Engineering Portfolio
+    </footer>
+
+</body>
+</html>

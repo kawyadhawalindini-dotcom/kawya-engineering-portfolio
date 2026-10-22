@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Power System Fault Simulation | Kawya</title>
+
+    <meta name="description"
+          content="Power system modelling and fault analysis project using PSCAD.">
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .project-hero {
+            padding: 75px 0 55px;
+            background: radial-gradient(
+                ellipse at 85% 20%,
+                rgba(37, 99, 235, 0.17),
+                transparent 55%
+            );
+        }
+
+        .project-hero h1 {
+            max-width: 900px;
+            font-size: clamp(2.2rem, 5vw, 3.7rem);
+        }
+
+        .project-hero p,
+        .project-section p,
+        .project-section li {
+            color: var(--muted);
+        }
+
+        .project-section {
+            padding: 35px 0;
+        }
+
+        .project-section h2 {
+            font-size: 1.7rem;
+        }
+
+        .project-section ul,
+        .project-section ol {
+            padding-left: 24px;
+            margin-top: 14px;
+        }
+
+        .project-section li {
+            margin-bottom: 9px;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            padding: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .info-card strong {
+            display: block;
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
+
+        .notice {
+            margin-top: 18px;
+            padding: 18px;
+            background: var(--surface);
+            border-left: 3px solid var(--blue);
+            color: var(--muted);
+        }
+
+        @media (max-width: 650px) {
+            .project-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">KAWYA.DEV</div>
+
+            <div>
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="project-hero">
+        <div class="container">
+
+            <div class="eyebrow">Project 01 · Power Systems</div>
+
+            <h1>
+                Power System Analysis and
+                <span>Fault Simulation</span>
+            </h1>
+
+            <p>
+                Investigation of electrical network behaviour under
+                normal operating conditions and symmetrical and
+                unsymmetrical faults using PSCAD.
+            </p>
+
+            <div class="project-info">
+                <div class="info-card">
+                    <strong>Software</strong>
+                    PSCAD
+                </div>
+
+                <div class="info-card">
+                    <strong>Domain</strong>
+                    Electrical Power Systems
+                </div>
+
+                <div class="info-card">
+                    <strong>Project focus</strong>
+                    Fault Analysis
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">01 · Overview</div>
+            <h2>Project Overview</h2>
+
+            <p>
+                This project focuses on developing a representative
+                electrical power network in PSCAD and analysing its
+                behaviour under normal operating conditions and
+                selected fault scenarios. Voltage, current and power
+                measurements will be used to compare system performance
+                before and during faults.
+            </p>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">02 · Objectives</div>
+            <h2>Objectives</h2>
+
+            <ul>
+                <li>Develop a power system model consisting of a source,
+                    transformer, line and electrical loads.</li>
+                <li>Measure bus voltages and line currents during normal
+                    operation.</li>
+                <li>Investigate three-phase fault behaviour.</li>
+                <li>Investigate line-to-ground fault behaviour.</li>
+                <li>Compare voltage response and fault current for the
+                    selected operating conditions.</li>
+                <li>Discuss the engineering implications of the
+                    simulation results.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">03 · System Model</div>
+            <h2>Proposed Network Configuration</h2>
+
+            <p>
+                The planned network includes an AC source, a transformer,
+                a transmission or distribution line, a load bus and
+                electrical loads. Measurement points will be placed at
+                appropriate locations to record system behaviour.
+            </p>
+
+            <div class="notice">
+                <strong>Model status:</strong>
+                System diagram, component parameters and PSCAD
+                screenshots will be added after the simulation model
+                has been implemented and verified.
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">04 · Methodology</div>
+            <h2>Simulation Methodology</h2>
+
+            <ol>
+                <li>Define the network configuration and component
+                    parameters.</li>
+                <li>Build the electrical model in PSCAD.</li>
+                <li>Run the normal operating case and record voltage,
+                    current and power measurements.</li>
+                <li>Introduce a three-phase fault and record the
+                    resulting system response.</li>
+                <li>Introduce a line-to-ground fault and record the
+                    resulting system response.</li>
+                <li>Compare the cases using waveforms, numerical
+                    measurements and engineering analysis.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">05 · Results</div>
+            <h2>Simulation Results</h2>
+
+            <p>
+                Simulation results will be documented after the
+                model has been executed. The analysis will include
+                bus voltage, line current, fault current and power
+                flow where applicable.
+            </p>
+
+            <div class="notice">
+                Results are not yet available. No simulated values
+                or conclusions have been assumed in this section.
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="section-label">06 · Engineering Discussion</div>
+            <h2>Analysis and Conclusion</h2>
+
+            <p>
+                The completed study will examine how the selected
+                faults affect voltage, current and power transfer.
+                The final discussion will be based on the actual
+                PSCAD waveforms, model parameters and measured results.
+            </p>
+
+            <div class="buttons">
+                <a href="../index.html#projects"
+                   class="button secondary">
+                    Back to All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        © 2026 Kawya Dhawalindini | Engineering Portfolio
+    </div>
+</footer>
+
+</body>
+</html>
